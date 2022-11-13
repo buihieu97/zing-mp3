@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+    overflow-x: hidden;
+    background: linear-gradient(
+      338deg,
+      rgb(21, 21, 21) 0%,
+      rgba(16, 16, 16, 0.945) 35%
+    );
+  }
+}
+
+.text-truncation {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// .shadow {
+//   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+//     rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+//     rgba(0, 0, 0, 0.07) 0px 16px 16px;
+// }
