@@ -35,7 +35,7 @@ const Header = () => {
         </div>
         <div
           className={`h-full absolute  -left-[5vw] lg:w-[400px] lg:static   transition-all duration-500
-           w-screen z-50  ${toggleSearch ? "top-0" : "-top-[100%]"}`}
+           w-screen z-30 ${toggleSearch ? "top-0" : "-top-[100%]"}`}
         >
           <form
             className={`flex justify-center items-center  h-full`}

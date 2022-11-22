@@ -15,7 +15,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const playList = useSelector((state) => state.data.playListSearch);
   const [isLoading, setIsLoading] = useState(true);
-  const [dataSearch, setDataSearch] = useState(true);
+  const [dataSearch, setDataSearch] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     (async function getDataSearch() {
@@ -34,6 +34,9 @@ const Search = () => {
   }, [param]);
 
   if (isLoading) return <Skeleton />;
+  if (dataSearch.counter.artist === 0 && dataSearch.counter.song === 0) {
+    return <p className="my-4 text-3xl text-center">No Result</p>;
+  }
 
   return (
     <div>
@@ -44,7 +47,7 @@ const Search = () => {
           playList &&
           playList.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               onClick={() => {
                 dispatch(setCurrentIndex(index));
 

@@ -6,11 +6,12 @@ const Title = ({ infoSong }) => {
       <div className=" w-16  mr-5  ">
         <img src={infoSong?.thumbnailM} />
       </div>
-      <div className="hidden md:block">
-        <p className="mb-2 text-truncation text-base font-semibold">
+      <div className="hidden md:block relative">
+        <p className="mb-2  text-base font-semibold marquee max-w-[200px]">
           {infoSong?.title}
         </p>
-        <p className="text-gray-400 text-truncation text-sm">
+
+        <p className="text-gray-400 text-truncation text-sm max-w-[200px]">
           {infoSong?.artistsNames}
         </p>
       </div>

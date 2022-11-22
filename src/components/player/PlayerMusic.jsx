@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Title from "./Title";
 import {
   BsPlayCircle,
@@ -27,7 +29,7 @@ const PlayerMusic = () => {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(50);
   const dispatch = useDispatch();
-
+  const notify = (msg) => toast.error(msg);
   const namePlayList = useSelector((state) => {
     return state.data.namePlayList;
   });
@@ -58,6 +60,12 @@ const PlayerMusic = () => {
   }, [currentIndex]);
 
   useEffect(() => {
+    if (infoSong?.msg === "Nội dung này không tải được cho quốc gia của bạn!") {
+      notify(infoSong.msg);
+      refAudio.current.pause();
+      setIsPlay(true);
+      return;
+    }
     refAudio.current.play();
   }, [infoSong]);
 
@@ -97,6 +105,19 @@ const PlayerMusic = () => {
   };
   return (
     <div className="bg-color-bg h-[90px]  py-4 border-t border-gray-800 fixed bottom-0 right-0 left-0 flex items-center">
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        className="text-base mt-[62px] "
+      />
       <div className="w-full flex items-center justify-between mx-[5vw]">
         <audio
           className="hidden"
@@ -130,21 +151,21 @@ const PlayerMusic = () => {
               <span className="text-base ">0:00</span>
             )}
             <div onClick={handleBack}>
-              <BsSkipStart className="text-2xl md:text-3xl cursor-pointer" />
+              <BsSkipStart className="text-2xl md:text-3xl cursor-pointer hover:opacity-70 hover:scale-90 duration-200 transition-all" />
             </div>
             {isLoading ? (
               <BsBroadcast className=" text-3xl md:text-4xl   animate-spin" />
             ) : (
               <div onClick={handlePlay}>
                 {!isPlay ? (
-                  <BsPauseCircle className=" text-3xl md:text-4xl   cursor-pointer" />
+                  <BsPauseCircle className=" text-3xl md:text-4xl   cursor-pointer hover:opacity-70 hover:scale-90 duration-200 transition-all" />
                 ) : (
-                  <BsPlayCircle className=" text-3xl md:text-4xl   cursor-pointer" />
+                  <BsPlayCircle className=" text-3xl md:text-4xl   cursor-pointer hover:opacity-70 hover:scale-90 duration-200 transition-all" />
                 )}
               </div>
             )}
             <div onClick={handleNext}>
-              <BsSkipEnd className="text-2xl md:text-3xl cursor-pointer" />
+              <BsSkipEnd className="text-2xl md:text-3xl cursor-pointer hover:opacity-70 hover:scale-90 duration-200 transition-all" />
             </div>
             {duration ? (
               <span className="text-base ">{formatDuration(duration)}</span>

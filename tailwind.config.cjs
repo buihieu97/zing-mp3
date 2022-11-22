@@ -9,6 +9,18 @@ module.exports = {
         "color-header": "#171717",
         "color-card": "#121212",
       },
+
+      keyframes: {
+        marquee: {
+          "0%": {
+            transform: " translate(-100%, 0)",
+          },
+
+          "100%": {
+            transform: "translate(100%, 0)",
+          },
+        },
+      },
     },
   },
   plugins: [],

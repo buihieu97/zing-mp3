@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "https://apizingmp3.herokuapp.com/api/",
+  baseURL: import.meta.env.VITE_API_ENDPOINT,
 });
 // Add a request interceptor
 axios.interceptors.request.use(
